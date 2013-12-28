@@ -7,7 +7,10 @@
  * License: GPL2
  */
 
-// First, let's hook up oauth2
+register_activation_hook(__FILE__, 'wpnb_firstrun');
+
+
+// Grab oAuth2 Files
 require('includes/oauth2/client.php');
 require('includes/oauth2/GrantType/IGrantType.php');
 require('includes/oauth2/GrantType/AuthorizationCode.php');
@@ -22,10 +25,9 @@ $accessTokenUri = $nationUrl . '/oauth/token';
 
 $client = new OAuth2\Client($clientId, $clientSecret);
 
-// Admin Menu
-add_action('admin_menu', 'nb_admin_page');
+// Grabs the necessary admin files for the plugin
+if (is_admin()) {
+	require_once('admin/menu.php');
 
-function nb_admin_page () {
-	add_menu_page('NationBuilder', 'NationBuilder' , 'manage_options' , 'wp-nationbuilder/wp-nb-admin.php', '', '', 6);
+
 }
-
