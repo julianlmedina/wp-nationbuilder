@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== WP NationBuilder ===
 Contributors: Julian Medina
 Tags: nationbuilder, crm
 Requires at least: 3.8
